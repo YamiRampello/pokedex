@@ -4,11 +4,11 @@ html {
 }
 
 h1 {
-  background-color: rgb(194, 154, 154);
+  font-size: 70px !important;
+  color: #e8ed61 !important;
+  background-color: #d34747;
   text-align: center;
+  font-family: sans;
+  -webkit-text-stroke: 3px rgb(24, 21, 184);
 }
 
-ul {
-  text-align: left;
-  font-size: 18px;
-}
