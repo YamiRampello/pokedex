@@ -12,3 +12,6 @@ h1 {
   -webkit-text-stroke: 3px rgb(24, 21, 184);
 }
 
+.oculto {
+  display: none;
+}
