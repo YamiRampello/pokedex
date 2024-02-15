@@ -34,28 +34,45 @@ function mostrarListadoPokemones(pokemones) {
   document.querySelector('#pokemones').appendChild($lista);
 }
 
+function actualizar() {
+  mostrarCartelActualizacion();
+  obtenerDetallePokemonSeleccionado(obtenerPokemonSeleccionado()).then(
+    (detallePokemonJSON) =>
+      mostrarDetallePokemonSeleccionado(detallePokemonJSON)
+  );
+}
+
 function mostrarCartelActualizacion() {
   document.querySelector('#cambio tbody').innerHTML = 'Cargando...';
 }
 
-function actualizar() {
-  mostrarCartelActualizacion();
-  obtenerDetallePokemon(obtenerPokemonSeleccionado());
+function mostrarDetallePokemonSeleccionado(detallePokemonJSON) {
+  document.querySelector('#cambio tbody').innerHTML = '';
+  document.querySelector('#detalle').classList.remove('oculto');
+
+  const $guardarNombre = document.querySelector('#detalle-nombre');
+  $guardarNombre.innerHTML = 'Nombre';
+
+  const $guardarExperiencia = document.querySelector('#detalle-experiencia');
+  $guardarExperiencia.innerHTML = 'Experiencia';
+
+  const $guardarPeso = document.querySelector('#detalle-peso');
+  $guardarPeso.innerHTML = 'Peso';
+
+  const $pokemonNombre = detallePokemonJSON.name;
+  const $pokemonExperiencia = detallePokemonJSON.base_experience;
+  const $pokemonPeso = detallePokemonJSON.weight;
+
+  $guardarNombre.innerHTML = `Nombre: ${$pokemonNombre}`;
+  $guardarExperiencia.innerHTML = `Experiencia: ${$pokemonExperiencia}`;
+  $guardarPeso.innerHTML = `Peso: ${$pokemonPeso} hectogramas`;
 }
 
-function obtenerDetallePokemon(nombrePokemon) {
+function obtenerDetallePokemonSeleccionado(nombrePokemon) {
   const URL = 'https://pokeapi.co/api/v2/pokemon';
-  return fetch(`${URL}/${nombrePokemon}`)
-    .then((detallePokemon) => detallePokemon.json())
-    .then((detallePokemonJSON) =>
-      console.log(
-        detallePokemonJSON.name,
-        detallePokemonJSON.base_experience, //	The base experience gained for defeating this Pokémon
-        detallePokemonJSON.weight //The weight of this Pokémon in hectograms.
-        //detallePokemonJSON.abilities[0].ability.name,
-        //detallePokemonJSON.abilities[1].ability.name
-      )
-    );
+  return fetch(`${URL}/${nombrePokemon}`).then((detallePokemon) =>
+    detallePokemon.json()
+  );
 }
 
 function obtenerPokemonSeleccionado() {
@@ -68,7 +85,6 @@ function obtenerPokemonSeleccionado() {
 
 function iniciar() {
   obtenerPokemones().then((pokemon) => mostrarListadoPokemones(pokemon));
-  //elegir pokemon?
 }
 
 iniciar();
