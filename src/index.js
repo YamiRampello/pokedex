@@ -23,6 +23,7 @@ function mostrarListadoPokemones(pokemones) {
 
     $item.addEventListener('click', () => {
       const $itemActivo = document.querySelector('.list-group-item.active');
+
       if ($itemActivo) {
         $itemActivo.classList.remove('active');
       }
@@ -62,10 +63,33 @@ function mostrarDetallePokemonSeleccionado(detallePokemonJSON) {
   const $pokemonNombre = detallePokemonJSON.name;
   const $pokemonExperiencia = detallePokemonJSON.base_experience;
   const $pokemonPeso = detallePokemonJSON.weight;
+  const $pokemonId = detallePokemonJSON.id;
+
+  borrarImagenesPokemon();
+  obtenerFotoPokemon($pokemonId);
 
   $guardarNombre.innerHTML = `Nombre: ${$pokemonNombre}`;
   $guardarExperiencia.innerHTML = `Experiencia: ${$pokemonExperiencia}`;
   $guardarPeso.innerHTML = `Peso: ${$pokemonPeso} hectogramas`;
+}
+
+function borrarImagenesPokemon() {
+  const $imagenesPokemon = document.querySelectorAll('img');
+
+  if ($imagenesPokemon) {
+    $imagenesPokemon.forEach((imagen) => {
+      imagen.src = ''; //imagen.style.display = 'none';
+    });
+  }
+}
+
+function obtenerFotoPokemon(idPokemon) {
+  const $guardarImagen = document.querySelector('#detalle-imagen');
+
+  const $fotoPokemon = document.createElement('img');
+  $fotoPokemon.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idPokemon}.png`;
+
+  $guardarImagen.appendChild($fotoPokemon);
 }
 
 function obtenerDetallePokemonSeleccionado(nombrePokemon) {
