@@ -51,6 +51,8 @@ function mostrarDetallePokemonSeleccionado(detallePokemonJSON) {
   document.querySelector('#cambio tbody').innerHTML = '';
   document.querySelector('#detalle').classList.remove('oculto');
 
+  const $guardarNombreTitulo = document.querySelector('#nombre');
+
   const $guardarNombre = document.querySelector('#detalle-nombre');
   $guardarNombre.innerHTML = 'Nombre';
 
@@ -60,6 +62,7 @@ function mostrarDetallePokemonSeleccionado(detallePokemonJSON) {
   const $guardarPeso = document.querySelector('#detalle-peso');
   $guardarPeso.innerHTML = 'Peso';
 
+  const $pokemonNombreTitulo = detallePokemonJSON.name;
   const $pokemonNombre = detallePokemonJSON.name;
   const $pokemonExperiencia = detallePokemonJSON.base_experience;
   const $pokemonPeso = detallePokemonJSON.weight;
@@ -68,9 +71,10 @@ function mostrarDetallePokemonSeleccionado(detallePokemonJSON) {
   borrarImagenesPokemon();
   obtenerFotoPokemon($pokemonId);
 
+  $guardarNombreTitulo.innerHTML = $pokemonNombreTitulo;
   $guardarNombre.innerHTML = `Nombre: ${$pokemonNombre}`;
   $guardarExperiencia.innerHTML = `Experiencia: ${$pokemonExperiencia}`;
-  $guardarPeso.innerHTML = `Peso: ${$pokemonPeso} hectogramas`;
+  $guardarPeso.innerHTML = `Peso: ${$pokemonPeso} Hg.`;
 }
 
 function borrarImagenesPokemon() {
