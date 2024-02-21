@@ -1,6 +1,6 @@
 /// <reference types="jquery" />
 
-function obtenerPokemones(offset = '0', limit = '19') {
+function obtenerPokemones(offset = '0', limit = '11') {
   const URL = 'https://pokeapi.co/api/v2/pokemon';
 
   return fetch(`${URL}?offset=${offset}&limit=${limit}`)
@@ -62,10 +62,14 @@ function mostrarDetallePokemonSeleccionado(detallePokemonJSON) {
   const $guardarPeso = document.querySelector('#detalle-peso');
   $guardarPeso.innerHTML = 'Peso';
 
+  const $guardarAltura = document.querySelector('#detalle-altura');
+  $guardarAltura.innerHTML = 'Altura';
+
   const $pokemonNombreTitulo = detallePokemonJSON.name;
   const $pokemonNombre = detallePokemonJSON.name;
   const $pokemonExperiencia = detallePokemonJSON.base_experience;
   const $pokemonPeso = detallePokemonJSON.weight;
+  const $pokemonAltura = detallePokemonJSON.height;
   const $pokemonId = detallePokemonJSON.id;
 
   borrarImagenesPokemon();
@@ -74,7 +78,8 @@ function mostrarDetallePokemonSeleccionado(detallePokemonJSON) {
   $guardarNombreTitulo.innerHTML = $pokemonNombreTitulo;
   $guardarNombre.innerHTML = `Nombre: ${$pokemonNombre}`;
   $guardarExperiencia.innerHTML = `Experiencia: ${$pokemonExperiencia}`;
-  $guardarPeso.innerHTML = `Peso: ${$pokemonPeso} Hg.`;
+  $guardarPeso.innerHTML = `Peso: ${$pokemonPeso} hg.`;
+  $guardarAltura.innerHTML = `Altura: ${$pokemonAltura} dc.`;
 }
 
 function borrarImagenesPokemon() {
@@ -111,8 +116,32 @@ function obtenerPokemonSeleccionado() {
   return undefined; //configurar este también
 }
 
-function iniciar() {
-  obtenerPokemones().then((pokemon) => mostrarListadoPokemones(pokemon));
+function iniciar(offsetIniciar = '0') {
+  obtenerPokemones((offset = offsetIniciar)).then((pokemon) =>
+    mostrarListadoPokemones(pokemon)
+  );
 }
 
-iniciar();
+iniciar((offsetIniciar = '0'));
+
+const $siguiente = document.querySelector('#siguiente');
+
+$siguiente.addEventListener('click', avanzarPagina);
+
+let paginaActual = 1;
+
+function avanzarPagina() {
+  const POKEMONES_POR_PAGINA = 11;
+  const ULTIMA_PAGINA = 119;
+  const offsetSiguiente = paginaActual * POKEMONES_POR_PAGINA;
+
+  if (paginaActual < ULTIMA_PAGINA) {
+    limpiarListaPokemones();
+    iniciar((offsetIniciar = offsetSiguiente));
+    paginaActual = paginaActual + 1;
+  }
+}
+
+function limpiarListaPokemones() {
+  document.querySelector('#pokemones').textContent = '';
+}
