@@ -122,23 +122,41 @@ function iniciar(offsetIniciar = '0') {
   );
 }
 
-iniciar((offsetIniciar = '0'));
+iniciar(0);
+let paginaActual = 1;
 
 const $siguiente = document.querySelector('#siguiente');
-
 $siguiente.addEventListener('click', avanzarPagina);
 
-let paginaActual = 1;
+const $anterior = document.querySelector('#atras');
+$anterior.addEventListener('click', retrocederPagina);
 
 function avanzarPagina() {
   const POKEMONES_POR_PAGINA = 11;
   const ULTIMA_PAGINA = 119;
+  const CANTIDAD_PAGINA_A_AVANZAR = 1;
   const offsetSiguiente = paginaActual * POKEMONES_POR_PAGINA;
 
   if (paginaActual < ULTIMA_PAGINA) {
     limpiarListaPokemones();
-    iniciar((offsetIniciar = offsetSiguiente));
-    paginaActual = paginaActual + 1;
+    iniciar(offsetSiguiente);
+    paginaActual = paginaActual + CANTIDAD_PAGINA_A_AVANZAR;
+  }
+}
+
+function retrocederPagina() {
+  const POKEMONES_POR_PAGINA = 11;
+  const ULTIMA_PAGINA = 1;
+  const CANTIDAD_PAGINA_A_RETROCEDER = 1;
+  const CANTIDAD_OFFSET_A_RETROCEDER = 2;
+
+  const offsetAnterior =
+    (paginaActual - CANTIDAD_OFFSET_A_RETROCEDER) * POKEMONES_POR_PAGINA;
+
+  if (paginaActual > ULTIMA_PAGINA) {
+    limpiarListaPokemones();
+    iniciar(offsetAnterior);
+    paginaActual = paginaActual - CANTIDAD_PAGINA_A_RETROCEDER;
   }
 }
 
