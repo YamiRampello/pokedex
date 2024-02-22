@@ -36,6 +36,7 @@ function mostrarListadoPokemones(pokemones) {
 }
 
 function actualizar() {
+  ocultarPokebola();
   mostrarCartelActualizacion();
   obtenerDetallePokemonSeleccionado(obtenerPokemonSeleccionado()).then(
     (detallePokemonJSON) =>
@@ -162,4 +163,8 @@ function retrocederPagina() {
 
 function limpiarListaPokemones() {
   document.querySelector('#pokemones').textContent = '';
+}
+
+function ocultarPokebola() {
+  document.querySelector('#pokebola').classList.add('oculto');
 }
