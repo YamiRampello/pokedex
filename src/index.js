@@ -114,7 +114,6 @@ function obtenerPokemonSeleccionado() {
   if ($activeItem) {
     return $activeItem.dataset.base; //nombre
   }
-  return undefined; //configurar este también
 }
 
 function iniciar(offsetIniciar = '0') {
