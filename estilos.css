@@ -3,13 +3,18 @@ html {
   height: 100%;
 }
 
-h1 {
-  font-size: 70px !important;
-  color: #e8ed61 !important;
-  background-color: #d34747;
+h2 {
+  font-size: 40px !important;
+  background-color: #de2525;
   text-align: center;
-  font-family: sans;
-  -webkit-text-stroke: 3px rgb(24, 21, 184);
+  -webkit-text-stroke: 1px #342df1;
+}
+
+h3 {
+  font-size: 40px !important;
+  color: #010100 !important;
+  text-align: left;
+  -webkit-text-stroke: 2px #0e0d0d;
 }
 
 .oculto {
@@ -51,4 +56,9 @@ img {
   font-size: 22px;
   font-family: arial;
   text-align: center;
+}
+
+#atras,
+#siguiente {
+  color: #dc3545;
 }
