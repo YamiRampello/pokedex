@@ -66,7 +66,6 @@ function mostrarDetallePokemonSeleccionado(detallePokemonJSON) {
   const $guardarAltura = document.querySelector('#detalle-altura');
   $guardarAltura.innerHTML = 'Altura';
 
-  const $pokemonNombreTitulo = detallePokemonJSON.name;
   const $pokemonNombre = detallePokemonJSON.name;
   const $pokemonExperiencia = detallePokemonJSON.base_experience;
   const $pokemonPeso = detallePokemonJSON.weight;
@@ -76,7 +75,7 @@ function mostrarDetallePokemonSeleccionado(detallePokemonJSON) {
   borrarImagenesPokemon();
   obtenerFotoPokemon($pokemonId);
 
-  $guardarNombreTitulo.innerHTML = $pokemonNombreTitulo;
+  $guardarNombreTitulo.innerHTML = $pokemonNombre;
   $guardarNombre.innerHTML = `Nombre: ${$pokemonNombre}`;
   $guardarExperiencia.innerHTML = `Experiencia: ${$pokemonExperiencia}`;
   $guardarPeso.innerHTML = `Peso: ${$pokemonPeso} hg.`;
