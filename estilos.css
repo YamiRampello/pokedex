@@ -62,3 +62,9 @@ img {
 #siguiente {
   color: #dc3545;
 }
+
+#detalle-imagen {
+  font-size: 30px;
+  text-align: center;
+  color: rgb(149, 142, 142);
+}

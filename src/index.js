@@ -45,11 +45,11 @@ function actualizar() {
 }
 
 function mostrarCartelActualizacion() {
-  document.querySelector('#cambio tbody').innerHTML = 'Cargando...';
+  document.querySelector('#detalle-imagen').innerHTML = 'Cargando...';
 }
 
 function mostrarDetallePokemonSeleccionado(detallePokemonJSON) {
-  document.querySelector('#cambio tbody').innerHTML = '';
+  document.querySelector('#detalle-imagen').innerHTML = '';
   document.querySelector('#detalle').classList.remove('oculto');
 
   const $guardarNombreTitulo = document.querySelector('#nombre');
