@@ -41,6 +41,6 @@ context('Pokedex', () => {
       cy.visit('/');
       cy.get('#siguiente').click();
       cy.get('.list-group').find('a').should('include.text', 'butterfree');
- 0   });
+    });
   });
 });
