@@ -1,12 +1,15 @@
 import {
+  mostrarDetallePokemonSeleccionado,
+  obtenerPokemonSeleccionado
+} from './ui/pokemon.js';
+
+import {
   ocultarPokebola,
   mostrarCartelActualizacion,
   mostrarListadoPokemones,
-  mostrarDetallePokemonSeleccionado,
-  obtenerPokemonSeleccionado,
   avanzarPagina,
   retrocederPagina
-} from './ui.js';
+} from './ui/paginacion.js';
 
 import {
   obtenerPokemones,
