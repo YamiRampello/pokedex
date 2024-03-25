@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type":"module",
   "scripts": {
-"cypress-run": "cypress run",
-"cypress-dev":"cypress open",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "cypress-run": "cypress run",
+    "cypress-dev": "cypress open",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "set NODE_ENV=dev&& node src/index.js",
+    "prod": "set NODE_ENV=prod&& node src/index.js"
+   
+  }, 
   "repository": {
     "type": "git",
     "url": "(github.com/YamiRampello/pokedex)"
@@ -15,10 +19,13 @@
   "author": "Yamila",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.3.2"
+    "bootstrap": "^5.3.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.1"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.29",
+    "cross-env": "^7.0.3",
     "cypress": "^13.6.6"
   }
 }
