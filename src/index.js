@@ -1,3 +1,22 @@
+import {
+  mostrarDetallePokemonSeleccionado,
+  obtenerPokemonSeleccionado
+} from './ui/pokemon.js';
+
+import {
+  ocultarPokebola,
+  mostrarCartelActualizacion,
+  mostrarListadoPokemones,
+  avanzarPagina,
+  retrocederPagina
+} from './ui/paginacion.js';
+
+import {
+  obtenerPokemones,
+  obtenerDetallePokemonSeleccionado
+} from './pokedex.js';
+
+
 /// <reference types="jquery" />
 
 function obtenerPokemones(offset = '0', limit = '11') {
